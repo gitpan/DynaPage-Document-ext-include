@@ -1,0 +1,73 @@
+NAME
+
+    DynaPage::Document::ext::include - 'include' extension of
+    DynaPag::Document
+
+     #------------------------------------------------------
+     # (C) Daniel Peder & Infoset s.r.o., all rights reserved
+     # http://www.infoset.com, Daniel.Peder@infoset.com
+     #------------------------------------------------------
+
+     $Revision: 1.2 $
+     $Date: 2005/01/13 22:20:53 $
+
+METHODS
+
+    template ( $self, $job ) : bool
+         syntax:
+         !include.template =- B<file_name>
+ 
+        See also DynaPage::Template
+
+        NOTE: $self is parent document object (eg blessed into
+        DynaPage::Document)
+
+    data ( $self, $job ) : bool
+         syntax:
+         !include.data =- B<file_name>
+ 
+        Parse data read from file_name results are merged into parent
+        document. If data contained another !include or other extension
+        commands, they will be handled properly. Parsing is done by
+        DynaPage::Sourcer Parse() method.
+
+        NOTE: $self is parent document object (eg blessed into
+        DynaPage::Document)
+
+    field ( $self, $job ) : bool
+         syntax-1:
+         !include.field.B<target-field> =- B<file_name>
+
+         syntax-2:
+         !include.field =- B<target-field> B<file_name>
+
+        Set target-field to contain data read from external file specified
+        by file_name.
+
+        NOTE: $self is parent document object (eg blessed into
+        DynaPage::Document)
+
+    hooks ( $self, $job ) : bool
+         syntax-1:
+         !include.hooks ==~
+           Init => sub {
+             my( $self, $hook_name, $hook_params ) =@_;
+             ...
+             ... PERL SCRIPT CODE
+             ...
+           }
+         ~== !include.hooks
+
+        NOTE: $self is parent document object (eg blessed into
+        DynaPage::Document)
+
+    module ( $self, $job ) : bool
+        NOTE: $self is parent document object (eg blessed into
+        DynaPage::Document)
+
+    parameters ( $self, $job ) : bool
+        NOTE: $self is parent document object (eg blessed into
+        DynaPage::Document)
+
+TODO
+
